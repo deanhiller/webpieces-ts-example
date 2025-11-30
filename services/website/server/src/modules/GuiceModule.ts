@@ -4,7 +4,8 @@ import { LoginController } from '../controllers/LoginController';
 import { ContextFilter } from '@webpieces/http-filters';
 import { JsonFilter } from '@webpieces/http-filters';
 
-export const GuiceModule = new ContainerModule((bind) => {
+export const GuiceModule = new ContainerModule((options) => {
+  const { bind } = options;
   // Controllers
   bind(HomeController).toSelf().inSingletonScope();
   bind(LoginController).toSelf().inSingletonScope();
