@@ -1,38 +1,16 @@
 import 'reflect-metadata';
-import express, { Application } from 'express';
-import { Container } from 'inversify';
-import { HomeController } from './controllers/HomeController';
+import { WebpiecesServer } from '@webpieces/http-server';
+import { ProdServerMeta } from './ProdServerMeta';
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
-// Create Inversify container
-const container = new Container();
-container.bind(HomeController).toSelf();
+console.log(`[ info  ] Initializing WebPieces Server...`);
 
-// Create Express app
-const app: Application = express();
+// Create and start WebpiecesServer
+const server = new WebpiecesServer(new ProdServerMeta());
+server.start(port);
 
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Get controller instance from container
-const homeController = container.get(HomeController);
-
-// Routes
-app.get('/', (req, res) => homeController.index(req, res));
-app.get('/health', (req, res) => homeController.health(req, res));
-app.get('/api/hello', (req, res) => {
-  res.json({
-    message: 'Hello from WebPieces!',
-    framework: '@webpieces/http-server',
-    version: '0.2.6'
-  });
-});
-
-// Start server
-app.listen(port, host, () => {
-  console.log(`[ ready ] http://${host}:${port}`);
-  console.log(`[ info  ] Using WebPieces TypeScript Framework`);
-});
+console.log(`[ ready ] http://${host}:${port}`);
+console.log(`[ info  ] Using WebPieces TypeScript Framework`);
+console.log(`[ info  ] Demo credentials: username="demo", password="password123"`);

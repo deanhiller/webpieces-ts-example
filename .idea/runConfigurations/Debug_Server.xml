@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Debug Server" type="NodeJSConfigurationType" node-parameters="--enable-source-maps">
+    <method v="2">
+      <option name="NxBeforeRun" enabled="true">
+        <target-to-run>build</target-to-run>
+        <project-name>server</project-name>
+      </option>
+    </method>
+    <node-interpreter>project</node-interpreter>
+    <node-parameters>--enable-source-maps</node-parameters>
+    <working-dir>$PROJECT_DIR$</working-dir>
+    <js-file>dist/services/website/server/main.js</js-file>
+    <envs>
+      <env name="HOST" value="localhost" />
+      <env name="PORT" value="3000" />
+    </envs>
+  </configuration>
+</component>

@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Attach to Server" type="node-remote-debug">
+    <method v="2" />
+    <address>localhost</address>
+    <port>9229</port>
+  </configuration>
+</component>
