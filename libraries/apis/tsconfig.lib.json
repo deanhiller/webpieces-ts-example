@@ -3,7 +3,10 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "declaration": true,
-    "types": ["node"]
+    "types": ["node"],
+    "paths": {
+      "apis": ["libraries/apis/src/index.ts"]
+    }
   },
   "include": ["src/**/*.ts"]
 }
