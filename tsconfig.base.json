@@ -10,14 +10,46 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@webpieces-example/apis": ["libraries/apis/src/index.ts"],
-      "apis": ["libraries/apis/src/index.ts"]
+      "@webpieces-example/apis": [
+        "libraries/apis/src/index.ts"
+      ],
+      "apis": [
+        "libraries/apis/src/index.ts"
+      ],
+      "@webpieces/core-context": [
+        "../webpieces-ts/packages/core/core-context/src/index.ts"
+      ],
+      "@webpieces/core-meta": [
+        "../webpieces-ts/packages/core/core-meta/src/index.ts"
+      ],
+      "@webpieces/http-api": [
+        "../webpieces-ts/packages/http/http-api/src/index.ts"
+      ],
+      "@webpieces/http-routing": [
+        "../webpieces-ts/packages/http/http-routing/src/index.ts"
+      ],
+      "@webpieces/http-filters": [
+        "../webpieces-ts/packages/http/http-filters/src/index.ts"
+      ],
+      "@webpieces/http-server": [
+        "../webpieces-ts/packages/http/http-server/src/index.ts"
+      ],
+      "@webpieces/http-client": [
+        "../webpieces-ts/packages/http/http-client/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp",
+    "../webpieces-ts"
+  ]
 }

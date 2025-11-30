@@ -29,6 +29,33 @@ rm package.json.tmp
 
 echo "✅ Updated package.json to use local dist packages"
 
+# Add TypeScript path mappings for IDE navigation
+echo "🔧 Adding TypeScript path mappings for source navigation..."
+node << 'SCRIPT'
+const fs = require('fs');
+const tsconfig = JSON.parse(fs.readFileSync('tsconfig.base.json', 'utf8'));
+
+tsconfig.compilerOptions.paths = {
+  ...tsconfig.compilerOptions.paths,
+  "@webpieces/core-context": ["../webpieces-ts/packages/core/core-context/src/index.ts"],
+  "@webpieces/core-meta": ["../webpieces-ts/packages/core/core-meta/src/index.ts"],
+  "@webpieces/http-api": ["../webpieces-ts/packages/http/http-api/src/index.ts"],
+  "@webpieces/http-routing": ["../webpieces-ts/packages/http/http-routing/src/index.ts"],
+  "@webpieces/http-filters": ["../webpieces-ts/packages/http/http-filters/src/index.ts"],
+  "@webpieces/http-server": ["../webpieces-ts/packages/http/http-server/src/index.ts"],
+  "@webpieces/http-client": ["../webpieces-ts/packages/http/http-client/src/index.ts"]
+};
+
+// Add webpieces-ts to exclude to prevent build errors
+if (!tsconfig.exclude.includes("../webpieces-ts")) {
+  tsconfig.exclude.push("../webpieces-ts");
+}
+
+fs.writeFileSync('tsconfig.base.json', JSON.stringify(tsconfig, null, 2) + '\n');
+SCRIPT
+
+echo "✅ Added path mappings to tsconfig.base.json"
+
 # Reinstall dependencies
 echo "📦 Installing dependencies..."
 npm install

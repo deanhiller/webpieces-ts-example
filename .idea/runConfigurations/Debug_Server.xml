@@ -1,10 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Debug Server" type="NodeJSConfigurationType">
-    <node-interpreter>project</node-interpreter>
-    <node-parameters>--enable-source-maps</node-parameters>
-    <working-dir>$PROJECT_DIR$</working-dir>
-    <js-file>$PROJECT_DIR$/dist/services/website/server/main.js</js-file>
+  <configuration default="false" name="Debug Server" type="NodeJSConfigurationType" path-to-js-file="dist/services/website/server/main.js" working-dir="$PROJECT_DIR$">
     <envs>
       <env name="HOST" value="localhost" />
       <env name="PORT" value="3000" />
