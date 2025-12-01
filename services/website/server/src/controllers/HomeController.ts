@@ -1,24 +1,27 @@
-import { injectable } from 'inversify';
-import { Request, Response } from 'express';
-import { WelcomeResponse, HealthResponse } from 'apis';
+import { provideSingleton } from '@webpieces/http-routing';
+import {
+  GeneralApiPrototype,
+  WelcomeRequest,
+  WelcomeResponse,
+  HealthRequest,
+  HealthResponse
+} from 'apis';
 
-@injectable()
-export class HomeController {
-  async index(req: Request, res: Response): Promise<void> {
-    const response: WelcomeResponse = {
-      message: 'Welcome to WebPieces TypeScript Example',
-      timestamp: new Date().toISOString(),
-      environment: process.env.NODE_ENV || 'development',
-    };
-    res.json(response);
+@provideSingleton()
+export class HomeController extends GeneralApiPrototype {
+  async welcome(request: WelcomeRequest): Promise<WelcomeResponse> {
+    const response = new WelcomeResponse();
+    response.message = 'Welcome to WebPieces TypeScript Example';
+    response.timestamp = new Date().toISOString();
+    response.environment = process.env.NODE_ENV || 'development';
+    return response;
   }
 
-  async health(req: Request, res: Response): Promise<void> {
-    const response: HealthResponse = {
-      status: 'healthy',
-      uptime: process.uptime(),
-      timestamp: new Date().toISOString(),
-    };
-    res.json(response);
+  async health(request: HealthRequest): Promise<HealthResponse> {
+    const response = new HealthResponse();
+    response.status = 'healthy';
+    response.uptime = process.uptime();
+    response.timestamp = new Date().toISOString();
+    return response;
   }
 }

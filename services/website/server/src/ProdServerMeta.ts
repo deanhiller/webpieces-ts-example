@@ -3,8 +3,9 @@ import { ContainerModule } from 'inversify';
 import { RESTApiRoutes } from '@webpieces/http-routing';
 import { GuiceModule } from './modules/GuiceModule';
 import { FilterRoutes } from './routes/FilterRoutes';
-import { LoginApiPrototype } from 'apis';
+import { LoginApiPrototype, GeneralApiPrototype } from 'apis';
 import { LoginController } from './controllers/LoginController';
+import { HomeController } from './controllers/HomeController';
 
 export class ProdServerMeta implements WebAppMeta {
   getDIModules(): ContainerModule[] {
@@ -13,8 +14,9 @@ export class ProdServerMeta implements WebAppMeta {
 
   getRoutes(): Routes[] {
     return [
-      new FilterRoutes(),
+      new RESTApiRoutes(GeneralApiPrototype, HomeController),
       new RESTApiRoutes(LoginApiPrototype, LoginController),
+      new FilterRoutes(),
     ];
   }
 }

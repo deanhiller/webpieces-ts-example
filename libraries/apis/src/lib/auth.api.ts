@@ -6,18 +6,18 @@ import { ValidateImplementation } from '@webpieces/http-api';
 // ============================================================================
 
 export class LoginRequest {
-  username: string = '';
-  password: string = '';
+  username?: string;
+  password?: string;
 }
 
 export class LoginResponse {
-  success: boolean = false;
+  success?: boolean;
   token?: string;
   message?: string;
   user?: {
-    id: number;
-    username: string;
-    email: string;
+    id?: number;
+    username?: string;
+    email?: string;
   };
 }
 
