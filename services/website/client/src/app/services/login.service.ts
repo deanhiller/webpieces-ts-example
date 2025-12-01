@@ -1,23 +1,11 @@
-import { Injectable } from '@angular/core';
-import { createClient } from '@webpieces/http-client';
-import { LoginApi, LoginApiPrototype, LoginRequest, LoginResponse } from 'apis';
+import { Injectable, inject } from '@angular/core';
+import { LoginApiPrototype, LoginRequest, LoginResponse } from 'apis';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  private client: LoginApi;
-
-  constructor() {
-    // Auto-generate type-safe client from LoginApiPrototype
-    // Reads @Post() and @Path() decorators at runtime
-    this.client = createClient(LoginApiPrototype, {
-      baseUrl: 'http://localhost:3000',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
+  private client = inject(LoginApiPrototype);
 
   async login(username: string, password: string): Promise<LoginResponse> {
     const request = new LoginRequest();

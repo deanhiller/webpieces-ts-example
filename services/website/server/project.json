@@ -7,7 +7,7 @@
     "build": {
       "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
+      "defaultConfiguration": "development",
       "options": {
         "platform": "node",
         "outputPath": "dist/services/website/server",
@@ -28,7 +28,7 @@
         "development": {},
         "production": {
           "esbuildOptions": {
-            "sourcemap": false,
+            "sourcemap": true,
             "outExtension": {
               ".js": ".js"
             }

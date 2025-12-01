@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../services/login.service';
@@ -11,12 +11,11 @@ import { LoginService } from '../services/login.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  private loginService = inject(LoginService);
   username = '';
   password = '';
   message = '';
   isLoading = false;
-
-  constructor(private loginService: LoginService) {}
 
   async onSubmit() {
     this.isLoading = true;

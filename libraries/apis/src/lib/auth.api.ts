@@ -25,8 +25,8 @@ export class LoginResponse {
 // PART 1: API INTERFACE (Pure TypeScript contract)
 // ============================================================================
 
-export interface LoginApi {
-  login(request: LoginRequest): Promise<LoginResponse>;
+export abstract class LoginApi {
+  abstract login(request: LoginRequest): Promise<LoginResponse>;
 }
 
 // ============================================================================
