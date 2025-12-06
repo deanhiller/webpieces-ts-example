@@ -80,6 +80,22 @@
           "buildTarget": "server:build:production"
         }
       }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/services/website/server"
+      ],
+      "options": {
+        "jestConfig": "services/website/server/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
     }
   },
   "tags": []

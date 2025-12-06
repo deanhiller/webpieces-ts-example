@@ -1,19 +1,12 @@
 import { injectable } from 'inversify';
 import { Controller, provideSingleton } from '@webpieces/http-routing';
-import { LoginApi, LoginApiPrototype, LoginRequest, LoginResponse } from 'apis';
-import { ValidateImplementation } from '@webpieces/http-api';
+import { LoginApi, LoginRequest, LoginResponse } from 'apis';
 
 @provideSingleton()
 @Controller()
-export class LoginController extends LoginApiPrototype implements LoginApi {
-  // Compile-time validator: ensures all LoginApi methods are implemented
-  private readonly __validator!: ValidateImplementation<LoginController, LoginApi>;
+export class LoginController implements LoginApi {
 
-  constructor() {
-    super();
-  }
-
-  override async login(request: LoginRequest): Promise<LoginResponse> {
+  async login(request: LoginRequest): Promise<LoginResponse> {
     console.log('Login attempt:', request.username);
 
     // Simple validation

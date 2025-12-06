@@ -1,0 +1,24 @@
+{
+  "@webpieces/apis": {
+    "level": 0,
+    "dependsOn": []
+  },
+  "@webpieces/architecture": {
+    "level": 0,
+    "dependsOn": []
+  },
+  "@webpieces/client": {
+    "level": 0,
+    "dependsOn": []
+  },
+  "@webpieces/client-e2e": {
+    "level": 1,
+    "dependsOn": [
+      "@webpieces/client"
+    ]
+  },
+  "@webpieces/server": {
+    "level": 0,
+    "dependsOn": []
+  }
+}

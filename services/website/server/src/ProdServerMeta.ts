@@ -1,22 +1,22 @@
-import { WebAppMeta, Routes } from '@webpieces/core-meta';
+import { WebAppMeta, Routes, RESTApiRoutes } from '@webpieces/http-routing';
 import { ContainerModule } from 'inversify';
-import { RESTApiRoutes } from '@webpieces/http-routing';
-import { GuiceModule } from './modules/GuiceModule';
-import { FilterRoutes } from './routes/FilterRoutes';
+import { WebpiecesModule } from '@webpieces/http-server';
+import { InversifyModule } from './modules/InversifyModule';
 import { LoginApiPrototype, GeneralApiPrototype } from 'apis';
 import { LoginController } from './controllers/LoginController';
 import { HomeController } from './controllers/HomeController';
+import { FilterRoutes } from './routes/FilterRoutes';
 
 export class ProdServerMeta implements WebAppMeta {
   getDIModules(): ContainerModule[] {
-    return [GuiceModule];
+    return [WebpiecesModule, InversifyModule];
   }
 
   getRoutes(): Routes[] {
     return [
+      new FilterRoutes(),
       new RESTApiRoutes(GeneralApiPrototype, HomeController),
       new RESTApiRoutes(LoginApiPrototype, LoginController),
-      new FilterRoutes(),
     ];
   }
 }
