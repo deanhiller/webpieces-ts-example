@@ -1,6 +1,8 @@
 import nx from '@nx/eslint-plugin';
+import webpiecesConfig from './eslint.webpieces.config.mjs';
 
 export default [
+  ...webpiecesConfig,
   ...nx.configs['flat/base'],
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],

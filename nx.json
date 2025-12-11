@@ -52,7 +52,8 @@
       "options": {
         "targetName": "e2e"
       }
-    }
+    },
+    "@webpieces/dev-config"
   ],
   "generators": {
     "@nx/angular:application": {
