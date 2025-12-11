@@ -1,3 +1,4 @@
+/* eslint-disable @webpieces/max-file-lines -- Auto-generated Nx welcome component */
 import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 

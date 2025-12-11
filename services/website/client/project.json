@@ -9,6 +9,7 @@
     "build": {
       "executor": "@angular/build:application",
       "outputs": ["{options.outputPath}"],
+      "dependsOn": ["^build", "apis:build"],
       "options": {
         "outputPath": "dist/services/website/client",
         "browser": "services/website/client/src/main.ts",

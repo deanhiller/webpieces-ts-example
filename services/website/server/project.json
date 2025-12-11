@@ -8,6 +8,7 @@
       "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "development",
+      "dependsOn": ["^build", "apis:build"],
       "options": {
         "platform": "node",
         "outputPath": "dist/services/website/server",

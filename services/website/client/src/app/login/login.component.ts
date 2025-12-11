@@ -21,27 +21,22 @@ export class LoginComponent {
     this.isLoading = true;
     this.message = '';
 
-    try {
-      const response = await this.loginService.login(this.username, this.password);
+    const response = await this.loginService.login(this.username, this.password);
 
-      if (response.success) {
-        this.message = `✓ Welcome, ${response.user?.username}!`;
+    if (response.success) {
+      this.message = `✓ Welcome, ${response.user?.username}!`;
 
-        // Store token
-        if (response.token) {
-          localStorage.setItem('authToken', response.token);
-        }
-
-        // Could navigate to dashboard here
-        console.log('Login successful, token:', response.token);
-      } else {
-        this.message = `✗ ${response.message || 'Login failed'}`;
+      // Store token
+      if (response.token) {
+        localStorage.setItem('authToken', response.token);
       }
-    } catch (error) {
-      console.error('Login error:', error);
-      this.message = '✗ An error occurred. Please try again.';
-    } finally {
-      this.isLoading = false;
+
+      // Could navigate to dashboard here
+      console.log('Login successful, token:', response.token);
+    } else {
+      this.message = `✗ ${response.message || 'Login failed'}`;
     }
+
+    this.isLoading = false;
   }
 }

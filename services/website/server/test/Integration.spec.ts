@@ -27,6 +27,7 @@ import {
  *
  * This pattern avoids HTTP overhead while testing the complete stack.
  */
+// eslint-disable-next-line @webpieces/max-method-lines -- Test suite with multiple test cases
 describe('Server Integration Tests', () => {
   let server: WebpiecesServer;
 
@@ -42,6 +43,7 @@ describe('Server Integration Tests', () => {
     }
   });
 
+  // eslint-disable-next-line @webpieces/max-method-lines -- Test suite with multiple test cases
   describe('LoginApi - Authentication Endpoint', () => {
     let loginApi: LoginApi;
 
