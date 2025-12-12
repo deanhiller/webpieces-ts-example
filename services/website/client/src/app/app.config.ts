@@ -5,9 +5,11 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { ClientConfig, createClient } from '@webpieces/http-client';
+import { ClientConfig } from '@webpieces/http-client';
 import { EnvironmentConfig } from './config/environment.config';
-import { LoginApi, LoginApiPrototype, GeneralApi, GeneralApiPrototype } from 'apis';
+import { createClientPatched } from './utils/client-factory-patch';
+import { GeneralApi, GeneralApiPrototype } from 'apis';
+import { LoginApi, LoginApiPrototype } from 'apis';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,21 +19,24 @@ export const appConfig: ApplicationConfig = {
     {
       provide: ClientConfig,
       useFactory: (envConfig: EnvironmentConfig) => {
+        console.log('🔧 Creating ClientConfig with API URL:', envConfig.apiBaseUrl());
         return new ClientConfig(envConfig.apiBaseUrl());
       },
       deps: [EnvironmentConfig]
     },
     {
-      provide: LoginApi,
+      provide: GeneralApi,
       useFactory: (config: ClientConfig) => {
-        return createClient(LoginApiPrototype, config);
+        console.log('🔧 Creating GeneralApi client with patched factory');
+        return createClientPatched(GeneralApiPrototype, config);
       },
       deps: [ClientConfig]
     },
     {
-      provide: GeneralApi,
+      provide: LoginApi,
       useFactory: (config: ClientConfig) => {
-        return createClient(GeneralApiPrototype, config);
+        console.log('🔧 Creating LoginApi client with patched factory');
+        return createClientPatched(LoginApiPrototype, config);
       },
       deps: [ClientConfig]
     },

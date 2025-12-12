@@ -7,17 +7,13 @@ import { LoginApi, LoginRequest, LoginResponse } from 'apis';
 export class LoginService {
   // eslint-disable-next-line @angular-eslint/prefer-inject
   constructor(private client: LoginApi) {
-    console.log('✅ LoginService LATEST VERSION constructor called with client:', client);
+    console.log('✅ LoginService LATEST VERSION constructor called with injected LoginApi client');
   }
 
   async login(username: string, password: string): Promise<LoginResponse> {
     const request = new LoginRequest();
     request.username = username;
     request.password = password;
-
-    // Call auto-generated client method
-    // This reads @Post() @Path('/api/auth/login') from decorators
-    // Makes: POST http://localhost:3000/api/auth/login
     return this.client.login(request);
   }
 
