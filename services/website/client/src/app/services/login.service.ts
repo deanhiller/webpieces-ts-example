@@ -1,11 +1,14 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { LoginApi, LoginRequest, LoginResponse } from 'apis';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  private client = inject(LoginApi);
+  // eslint-disable-next-line @angular-eslint/prefer-inject
+  constructor(private client: LoginApi) {
+    console.log('✅ LoginService LATEST VERSION constructor called with client:', client);
+  }
 
   async login(username: string, password: string): Promise<LoginResponse> {
     const request = new LoginRequest();

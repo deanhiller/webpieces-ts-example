@@ -1,19 +1,28 @@
 import { Route } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { ApiDemoComponent } from './api-demo/api-demo.component';
+import { HomeComponent } from './home/home.component';
+import { TestResultComponent } from './test-result/test-result.component';
+import { welcomeResolver } from './resolvers/welcome.resolver';
+import { healthResolver } from './resolvers/health.resolver';
+import { loginResolver } from './resolvers/login.resolver';
 
 export const appRoutes: Route[] = [
   {
-    path: 'api-demo',
-    component: ApiDemoComponent,
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
     path: '',
-    redirectTo: 'api-demo',
-    pathMatch: 'full'
-  }
+    component: HomeComponent,
+  },
+  {
+    path: 'test/welcome',
+    component: TestResultComponent,
+    resolve: { data: welcomeResolver },
+  },
+  {
+    path: 'test/health',
+    component: TestResultComponent,
+    resolve: { data: healthResolver },
+  },
+  {
+    path: 'test/login',
+    component: TestResultComponent,
+    resolve: { data: loginResolver },
+  },
 ];

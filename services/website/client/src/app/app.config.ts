@@ -5,9 +5,9 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { ClientConfig } from '@webpieces/http-client';
-import { provideLoginApi } from './providers/login-api.provider';
-import { provideGeneralApi } from './providers/general-api.provider';
+import { ClientConfig, createClient } from '@webpieces/http-client';
+import { EnvironmentConfig } from './config/environment.config';
+import { LoginApi, LoginApiPrototype, GeneralApi, GeneralApiPrototype } from 'apis';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,9 +16,24 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
     {
       provide: ClientConfig,
-      useValue: new ClientConfig('http://localhost:3000')
+      useFactory: (envConfig: EnvironmentConfig) => {
+        return new ClientConfig(envConfig.apiBaseUrl());
+      },
+      deps: [EnvironmentConfig]
     },
-    provideLoginApi(),
-    provideGeneralApi(),
+    {
+      provide: LoginApi,
+      useFactory: (config: ClientConfig) => {
+        return createClient(LoginApiPrototype, config);
+      },
+      deps: [ClientConfig]
+    },
+    {
+      provide: GeneralApi,
+      useFactory: (config: ClientConfig) => {
+        return createClient(GeneralApiPrototype, config);
+      },
+      deps: [ClientConfig]
+    },
   ],
 };

@@ -1,5 +1,4 @@
 import { ApiInterface, Post, Path } from '@webpieces/http-api';
-import { ValidateImplementation } from '@webpieces/http-api';
 
 // ============================================================================
 // REQUEST/RESPONSE DTOs
@@ -37,7 +36,7 @@ export abstract class LoginApi {
 export abstract class LoginApiPrototype implements LoginApi {
   @Post()
   @Path('/api/auth/login')
-  login(request: LoginRequest): Promise<LoginResponse> {
+  login(_request: LoginRequest): Promise<LoginResponse> {
     throw new Error('Method login() must be implemented by subclass');
   }
 }

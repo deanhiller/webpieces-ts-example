@@ -3,7 +3,7 @@ import { WebpiecesFactory } from '@webpieces/http-server';
 import { ProdServerMeta } from './ProdServerMeta';
 
 const host = process.env.HOST ?? 'localhost';
-const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+const port = process.env.PORT ? Number(process.env.PORT) : 8200;
 
 console.log(`[ info  ] Initializing WebPieces Server...`);
 

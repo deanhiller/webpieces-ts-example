@@ -41,13 +41,13 @@ export abstract class GeneralApi {
 export abstract class GeneralApiPrototype extends GeneralApi {
   @Get()
   @Path('/welcome')
-  welcome(request: WelcomeRequest): Promise<WelcomeResponse> {
+  welcome(_request: WelcomeRequest): Promise<WelcomeResponse> {
     throw new Error('Method welcome() must be implemented by subclass');
   }
 
   @Get()
   @Path('/api/health')
-  health(request: HealthRequest): Promise<HealthResponse> {
+  health(_request: HealthRequest): Promise<HealthResponse> {
     throw new Error('Method health() must be implemented by subclass');
   }
 }

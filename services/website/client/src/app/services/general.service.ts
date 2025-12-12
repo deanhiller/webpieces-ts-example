@@ -1,11 +1,14 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { GeneralApi, WelcomeRequest, WelcomeResponse, HealthRequest, HealthResponse } from 'apis';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GeneralService {
-  private client = inject(GeneralApi);
+  // eslint-disable-next-line @angular-eslint/prefer-inject
+  constructor(private client: GeneralApi) {
+    console.log('✅ GeneralService LATEST VERSION constructor called with client:', client);
+  }
 
   async getWelcome(): Promise<WelcomeResponse> {
     const request = new WelcomeRequest();

@@ -4,6 +4,8 @@
   "description": "Example application using WebPieces TypeScript framework",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start:client": "./scripts/local-start.sh client",
+    "start:server": "./scripts/local-start.sh server",
     "use-local-webpieces": "./scripts/use-local-webpieces.sh",
     "use-local-webpieces-link": "./scripts/use-local-webpieces-link.sh",
     "unlink-local-webpieces": "./scripts/unlink-local-webpieces.sh",
