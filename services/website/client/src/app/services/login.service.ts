@@ -1,11 +1,11 @@
 import { Injectable, inject } from '@angular/core';
-import { LoginApiPrototype, LoginRequest, LoginResponse } from 'apis';
+import { LoginApi, LoginRequest, LoginResponse } from 'apis';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  private client = inject(LoginApiPrototype);
+  private client = inject(LoginApi);
 
   async login(username: string, password: string): Promise<LoginResponse> {
     const request = new LoginRequest();

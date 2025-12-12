@@ -1,0 +1,32 @@
+<div class="api-demo">
+  <h2>WebPieces API Demo - End-to-End Working Example</h2>
+
+  <div class="demo-section">
+    <h3>1. Welcome API (GET /welcome)</h3>
+    <p class="result">{{ welcomeMessage || 'Loading...' }}</p>
+    <button (click)="callWelcomeApi()" [disabled]="isLoading">Refresh Welcome</button>
+  </div>
+
+  <div class="demo-section">
+    <h3>2. Health API (GET /api/health)</h3>
+    <p class="result">{{ healthStatus || 'Loading...' }}</p>
+    <button (click)="callHealthApi()" [disabled]="isLoading">Refresh Health</button>
+  </div>
+
+  <div class="demo-section">
+    <h3>3. Login API (POST /api/auth/login)</h3>
+    <p class="result">{{ loginStatus || 'Click button to test login' }}</p>
+    <button (click)="testLogin()" [disabled]="isLoading">Test Login (demo / password123)</button>
+  </div>
+
+  <div class="architecture-info">
+    <h4>Architecture:</h4>
+    <ul>
+      <li>✓ Angular Client injects <code>GeneralApi</code> and <code>LoginApi</code> (abstractions)</li>
+      <li>✓ Providers use <code>createClient(GeneralApiPrototype, config)</code> to read decorators</li>
+      <li>✓ HTTP calls auto-generated from <code>@Get()</code> <code>@Post()</code> <code>@Path()</code> decorators</li>
+      <li>✓ Server controllers implement same API interfaces</li>
+      <li>✓ Type-safe contract between client and server via shared <code>apis</code> library</li>
+    </ul>
+  </div>
+</div>
