@@ -7,7 +7,13 @@
     "debug:wait": "NODE_PRESERVE_SYMLINKS=1 PORT=8250 node --inspect-brk dist/services/website/server/main.js",
     "debug:serve": "npx nx serve server --configuration=development",
     "arch:generate": "nx run architecture:generate",
-    "arch:visualize": "nx run architecture:visualize"
+    "arch:visualize": "nx run architecture:visualize",
+    "arch:validate": "nx run architecture:validate-no-architecture-cycles && nx run architecture:validate-no-skiplevel-deps",
+    "arch:validate-all": "nx run architecture:validate-no-architecture-cycles && nx run architecture:validate-no-skiplevel-deps && nx run architecture:validate-architecture-unchanged",
+    "arch:check-circular": "nx run-many --target=validate-no-file-import-cycles --all",
+    "arch:check-circular-affected": "nx affected --target=validate-no-file-import-cycles",
+    "arch:validate-complete": "npm run arch:validate-all && npm run arch:check-circular",
+    "webpieces:ci": "npx nx affected --target=ci"
   },
   "repository": {
     "type": "git",
@@ -48,7 +54,7 @@
     "@types/jest": "^29.5.12",
     "@types/node": "20.19.9",
     "@typescript-eslint/utils": "^8.40.0",
-    "@webpieces/dev-config": "^0.2.46",
+    "@webpieces/dev-config": "^0.2.51",
     "angular-eslint": "^20.3.0",
     "esbuild": "^0.19.2",
     "eslint": "^9.8.0",
