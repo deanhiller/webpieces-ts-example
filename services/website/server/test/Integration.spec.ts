@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import { WebpiecesServer, WebpiecesFactory } from '@webpieces/http-server';
+import { WebpiecesConfig } from '@webpieces/http-routing';
 import { ProdServerMeta } from '../src/ProdServerMeta';
 import {
   LoginApi,
@@ -34,7 +35,7 @@ describe('Server Integration Tests', () => {
   beforeEach(async () => {
     // Create server with production configuration
     // No DI overrides needed - controllers have no external dependencies
-    server = await WebpiecesFactory.create(new ProdServerMeta());
+    server = await WebpiecesFactory.create(new ProdServerMeta(), new WebpiecesConfig());
   });
 
   afterEach(async () => {

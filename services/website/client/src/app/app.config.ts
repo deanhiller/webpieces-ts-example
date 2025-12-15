@@ -5,9 +5,8 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { ClientConfig } from '@webpieces/http-client';
+import { ClientConfig, createClient } from '@webpieces/http-client';
 import { EnvironmentConfig } from './config/environment.config';
-import { createClientPatched } from './utils/client-factory-patch';
 import { GeneralApi, GeneralApiPrototype } from 'apis';
 import { LoginApi, LoginApiPrototype } from 'apis';
 
@@ -27,16 +26,16 @@ export const appConfig: ApplicationConfig = {
     {
       provide: GeneralApi,
       useFactory: (config: ClientConfig) => {
-        console.log('🔧 Creating GeneralApi client with patched factory');
-        return createClientPatched(GeneralApiPrototype, config);
+        console.log('🔧 Creating GeneralApi client');
+        return createClient(GeneralApiPrototype, config);
       },
       deps: [ClientConfig]
     },
     {
       provide: LoginApi,
       useFactory: (config: ClientConfig) => {
-        console.log('🔧 Creating LoginApi client with patched factory');
-        return createClientPatched(LoginApiPrototype, config);
+        console.log('🔧 Creating LoginApi client');
+        return createClient(LoginApiPrototype, config);
       },
       deps: [ClientConfig]
     },
