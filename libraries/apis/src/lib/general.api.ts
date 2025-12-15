@@ -1,4 +1,4 @@
-import { ApiInterface, Get, Path } from '@webpieces/http-api';
+import { ApiInterface, Post, Path } from '@webpieces/http-api';
 
 // ============================================================================
 // REQUEST/RESPONSE DTOs
@@ -39,13 +39,13 @@ export abstract class GeneralApi {
 
 @ApiInterface()
 export abstract class GeneralApiPrototype extends GeneralApi {
-  @Get()
+  @Post()
   @Path('/welcome')
   welcome(_request: WelcomeRequest): Promise<WelcomeResponse> {
     throw new Error('Method welcome() must be implemented by subclass');
   }
 
-  @Get()
+  @Post()
   @Path('/api/health')
   health(_request: HealthRequest): Promise<HealthResponse> {
     throw new Error('Method health() must be implemented by subclass');

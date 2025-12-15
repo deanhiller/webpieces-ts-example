@@ -2,7 +2,8 @@
   <configuration default="false" name="Debug Server" type="NodeJSConfigurationType" path-to-js-file="dist/services/website/server/main.js" working-dir="$PROJECT_DIR$">
     <envs>
       <env name="HOST" value="localhost" />
-      <env name="PORT" value="3000" />
+      <env name="PORT" value="8250" />
+      <env name="NODE_PRESERVE_SYMLINKS" value="1" />
     </envs>
     <method v="2">
       <option name="NxBeforeRun" enabled="true">

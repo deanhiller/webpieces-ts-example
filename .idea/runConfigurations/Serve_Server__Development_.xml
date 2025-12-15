@@ -8,7 +8,10 @@
     </scripts>
     <arguments value="serve server" />
     <node-interpreter value="project" />
-    <envs />
+    <envs>
+      <env name="NODE_PRESERVE_SYMLINKS" value="1" />
+      <env name="PORT" value="8250" />
+    </envs>
     <method v="2" />
   </configuration>
 </component>

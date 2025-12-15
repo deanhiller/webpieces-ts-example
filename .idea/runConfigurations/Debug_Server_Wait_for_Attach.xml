@@ -9,7 +9,8 @@
     <node-interpreter value="project" />
     <envs>
       <env name="HOST" value="localhost" />
-      <env name="PORT" value="3000" />
+      <env name="PORT" value="8250" />
+      <env name="NODE_PRESERVE_SYMLINKS" value="1" />
     </envs>
     <method v="2">
       <option name="NxBeforeRun" enabled="true">

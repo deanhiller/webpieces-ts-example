@@ -12,12 +12,20 @@
     },
     "@nx/js:tsc": {
       "cache": true,
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "architecture:validate-complete",
+        "validate-no-file-import-cycles",
+        "^build"
+      ],
       "inputs": ["default", "^default"]
     },
     "@angular/build:application": {
       "cache": true,
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "architecture:validate-complete",
+        "validate-no-file-import-cycles",
+        "^build"
+      ],
       "inputs": ["default", "^default"]
     },
     "@nx/jest:jest": {
@@ -35,7 +43,11 @@
     },
     "@nx/esbuild:esbuild": {
       "cache": true,
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "architecture:validate-complete",
+        "validate-no-file-import-cycles",
+        "^build"
+      ],
       "inputs": ["default", "^default"]
     }
   },
