@@ -7,7 +7,7 @@
     "debug:wait": "NODE_PRESERVE_SYMLINKS=1 PORT=8250 node --inspect-brk dist/services/website/server/main.js",
     "debug:serve": "npx nx serve server --configuration=development",
     "arch:generate": "nx run architecture:generate",
-    "arch:visualize": "nx run architecture:visualize",
+    "arch:visualize": "nx run architecture:visualize"
   },
   "repository": {
     "type": "git",
